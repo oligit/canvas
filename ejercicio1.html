@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 1</title>
+	<link rel="stylesheet" href="">
+	<script>
+		window.onload = main;
+		function main (){
+			var canvas = document.getElementById('canvas');
+			if (canvas && canvas.getContext) {
+				var c = canvas.getContext('2d');
+				if (c) {
+					c.fillStyle = '#00F6FF'; //azulico
+					c.fillRect(0,0,599,399);
+					//se pinta el fondo
+					c.strokeStyle = '#000'; 
+					c.strokeRect(0, 0, 600, 400);
+					// se pone el borde
+					c.fillStyle = '#000';
+					c.font = '20px sans-serif';
+					c.fillText('Hola mundo', 195, 80);
+					console.log(c.fillStyle);
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+	<canvas id='canvas' width="600" height="400">
+		
+	</canvas>
+</body>
+</html>

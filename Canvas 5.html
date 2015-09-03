@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="keywords" content="web, learning, html5, css3">
+    <meta name="author" content="Oscar">
+    <meta name="application-name" content="�">
+    <meta name="description" content="JS">
+    <meta name="generator" content="Bluefish 2.2.4">
+    <meta charset="UTF-8">
+   
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="Azureus-icon.png">
+
+    <title>Canvas 1 </title>
+    <script>
+        window.onload = main;
+        
+        function main() {
+
+
+
+            var oCanvas = document.getElementById("canvas");
+            var text = document.getElementById("Texto");
+            if (!oCanvas && !oCanvas.getContext) {
+                return;
+            }
+            else {
+                var c = oCanvas.getContext('2d');
+                if (!c) {
+                    return;
+                }
+            }
+            c.fillStyle = "black";
+            c.strokeRect(0, 0, 399, 399);
+
+            text.addEventListener("keyup", pintado, false);
+
+            function pintado() {
+                
+                var text1 = text.value;
+                c.fillStyle = "blue";
+                c.font = "bold 16px Arial";
+                c.fillText(text1, 100, 100);
+
+            }
+            
+
+        }
+
+    </script>
+
+
+    <style>
+   
+       div {
+           margin: 30px;
+       }
+
+       
+/*formato de pie de pagina*/
+    footer div {
+        margin-top: 3em;
+        border-top: 2px solid silver;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas width="600" height="400" id="canvas">No tienes canvas</canvas>
+    </div>
+    <hr />
+    <label for="Texto">
+        Texto:
+        <input name="Texto" id="Texto" title="Introduzca texto" maxlength="40" />
+    </label>
+    
+<!-- Pie de pagina combinando boorstrap y css-->
+    <footer class="container.fluid">
+        <div class="col-md-8 col-md-offset-2">
+            <address class="text-center">&copy; Oscar Palanco <a href="mailto:opalanco@gmail.com">opalanco@gmail.com</a></address>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="keywords" content="web, learning, html5, css3">
+    <meta name="author" content="Oscar">
+    <meta name="application-name" content="�">
+    <meta name="description" content="JS">
+    <meta name="generator" content="Bluefish 2.2.4">
+    <meta charset="UTF-8">
+   
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="Azureus-icon.png">
+
+    <title>Canvas 1 </title>
+    <script>
+        $(function () {
+            main()
+        });
+            
+            function main() {
+                         
+
+            var oCanvas = document.getElementById("canvas");
+            
+           
+            if (!oCanvas && !oCanvas.getContext) {
+                return;
+            }
+            else {
+                var c = oCanvas.getContext('2d');
+                if (!c) {
+                    return;
+                }
+            }
+            var text = document.getElementById("Texto");
+            var rang = document.getElementById("rango");
+            var tipo = document.getElementById("letra");
+            
+            text.onkeyup = cambioTexto;
+            rang.onchange = cambioRelleno;
+            tipo.onchange = cambioLetra;
+
+            var mensaje = "Texto inicial";
+            var rell = "Borde";
+            var tip = "Arial";
+            pintado();
+            
+            
+
+            function pintado() {
+                c.clearRect(0, 0, 399, 399);
+                c.fillStyle = "black";
+                c.strokeRect(0, 0, oCanvas.width, oCanvas.height);
+                            
+                switch(rell) {
+                    case "Borde":
+                        c.fillStyle = "red";
+                        tip = ( "25px"+ " " + tip );
+                        c.font = tip;
+                        c.fillText(mensaje, 100, 100);
+                        break;
+                    case "Relleno":
+                        c.fillStyle = "blue";
+                        tip = ("25px" + " " + tip);
+                        c.font = tip;
+                        c.strokeText(mensaje, 100, 100);
+                        break;
+                    case "Ambos":
+                        c.fillStyle = "Yellow";
+                        tip = ("25px" + " " + tip);
+                        c.font = tip;
+                        c.fillText(mensaje, 100, 100);
+                        c.strokeText(mensaje, 100, 100);
+
+                }
+
+                
+            
+                
+
+            }
+            function cambioRelleno(oEvent) {
+                rell = oEvent.target.value;
+                pintado();
+            }
+            function cambioLetra(oEvent) {
+                tip = oEvent.target.value;
+                pintado();
+            }
+
+
+            function cambioTexto(oEvent) {
+                mensaje = oEvent.target.value;
+
+                pintado();
+            }
+            
+
+        }
+
+    </script>
+
+
+    <style>
+   
+       div {
+           margin: 30px;
+       }
+
+       
+/*formato de pie de pagina*/
+    footer div {
+        margin-top: 3em;
+        border-top: 2px solid silver;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas width="600" height="400" id="canvas">No tienes canvas</canvas>
+    </div>
+    <hr />
+    <label for="Texto">
+        Texto:
+        <input name="Texto" id="Texto" title="Introduzca texto" maxlength="40" />
+    </label>
+    <br />
+    <label for="Texto">
+        Borde o relleno :
+        <select id="rango">
+            <option value="Borde">Borde</option>
+            <option value="Relleno">Relleno</option>
+            <option value="Ambos">Ambos</option>
+            
+        </select>
+    </label>
+    <br />
+    <label for="Texto">
+        Tipo Letra :
+        <select id="letra">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Constantia">Constantia</option>
+        </select>
+    </label>
+    <br />
+        <!-- Pie de pagina combinando boorstrap y css-->
+        <footer class="container.fluid">
+            <div class="col-md-8 col-md-offset-2">
+                <address class="text-center">&copy; Oscar Palanco <a href="mailto:opalanco@gmail.com">opalanco@gmail.com</a></address>
+            </div>
+        </footer>
+
+</body>
+</html>

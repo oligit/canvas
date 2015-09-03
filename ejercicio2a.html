@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 2a</title>
+	<link rel="stylesheet" href="">
+	<style>
+		input{
+			float: left;
+			width: 19%;
+			box-sizing: border-box;
+		}
+		label{
+			float:left;
+			width: 80%;
+		}
+		canvas{
+			float: left;
+			width: 100%;
+		}
+		article{
+			width: 50%;
+		}
+		button{
+			float: left;
+			width: 100%;
+		}
+			</style>
+	<script>
+		window.onload = main;
+		function main (){
+			//console.log('main');
+			var cnvs = document.getElementById('cnvs');
+			if (cnvs && cnvs.getContext) {
+				var c = cnvs.getContext('2d');
+				if (c) {
+					var btn = document.getElementById('btn');
+					//console.log('c');
+					btn.addEventListener('click', pintar);
+					function pintar () {
+						c.clearRect();
+						var num = document.getElementById('num');
+						var size = document.getElementById('tamano');
+						var move = 20;
+						var a = 0.5;
+						var ini = 20;
+
+						for(var i = 0; i < num.value; i++){
+							var r = Math.floor((Math.random() * 255) + 1);
+							var g = Math.floor((Math.random() * 255) + 1);
+							var b = Math.floor((Math.random() * 255) + 1);
+
+							c.fillStyle = 'rgba('+r+', '+g+', '+b+', '+a+')';
+							c.fillRect(ini, ini, size.value, size.value);
+							console.log(i);
+							ini += move;
+						}//fin del bucle
+
+					};//fin de pintar
+				};
+			};	
+		};
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Canvas</h1>
+	</header>
+	<article>
+		<label for="num">Número de cuadrados</label>
+		<input type="text" id="num" name="num">
+		<label for="tamano">Tamaño en pixels del cuadrado</label>
+		<input type="number" id="tamano" name="tamano">
+		<button id="btn">Pintar</button>
+		<canvas heigth="1000" weight="600" id="cnvs">
+			
+		</canvas>
+	</article>
+</body>
+</html>

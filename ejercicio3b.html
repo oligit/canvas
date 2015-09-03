@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 3b</title>
+	<link rel="stylesheet" href="">
+</head>
+<script>
+		window.onload = main;
+		function main (){
+			var cnvs = document.getElementById('canvas');
+			if (cnvs && cnvs.getContext) {
+				var c = cnvs.getContext('2d');
+				if (c) {
+					(function(){ //pintar cara
+						console.log('cara');
+						c.beginPath();
+						c.arc(500, 250, 250, 0, 2 * Math.PI);
+						c.fillStyle='#FFF000';
+						c.fill();
+						c.stroke();
+					})();
+					
+					(function(){ //pintar ojicos
+						c.beginPath();
+						c.arc(425, 150, 50, 0, 2 * Math.PI);
+						c.fillStyle = '#000';
+						c.fill();
+						c.moveTo(475, 150);
+						c.arc(575, 150, 50, 0, 2 * Math.PI);
+						c.fill();
+					})();
+				};
+			};
+		};
+		
+
+</script>
+<body>
+	<canvas height="700" width="1000" id="canvas">
+		
+	</canvas>
+</body>
+</html>

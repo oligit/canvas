@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>
+		Ejercicio 4b
+	</title>
+	<link rel="stylesheet" href="">
+	<script>
+		window.onload = main;
+		function main (){
+			var cnvs = document.getElementById('canvas');
+			if (cnvs && cnvs.getContext) {
+				var c = cnvs.getContext('2d');
+				if (c) {
+					for(int j = 0; j<cnvs.height; j++){
+						for(var i = 0; i<cnvs.width; i++){
+							var r = Math.floor((Math.random() * 255) + 1);
+							var g = Math.floor((Math.random() * 255) + 1);
+							var b = Math.floor((Math.random() * 255) + 1);
+							c.fillStyle = 'rgb('+r+', '+g+', '+b+')';
+						}
+					}
+				};
+			};	
+		};
+	</script>
+</head>
+<body>
+	<canvas width="700" height="700">
+		
+	</canvas>
+</body>
+</html>

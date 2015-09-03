@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 7a</title>
+	<link rel="stylesheet" href="">
+	<style>
+		#main{
+			width: 500px;
+		}
+		#canvas{
+			float:left;
+		}
+		input[type="range"]{
+			float: left;
+			/*width: 100%;*/
+		}
+	</style>
+	<script>
+	window.onload = main;
+
+	function main (argument){
+		var cnvs = document.getElementById('canvas');
+		if (cnvs && cnvs.getContext) {
+			// console.log('entro en primer if');
+			var c = cnvs.getContext('2d');
+			if (c) {
+				// console.log('entro en c');
+				var rango = document.getElementById('rango');
+				rango.addEventListener('change', recoger, false);
+				
+				function recoger (e){
+					var val = e.target.value;
+					document.getElementById('num').innerHTML = val;
+					pintarCuadro();
+					c.pintarCuadro = function (x, y, l, isRelleno){
+						if (isRelleno) this.fillRect(x, y, l, l);
+						else this.strokeRect(x, y, l, l);
+					};
+					c.clearCanvas = function (argument){
+						c.clearRect(0,0,cnvs.width, cnvs.height);
+					};
+					const xC = 10;
+					const yC = 10;
+					const SIZE = 50;
+					function pintarCanvas (){
+						c.save();
+						val=0;
+						drawStep();
+						c.restore();
+					};
+					function drawStep (){
+						c.pintarCuadro(xC, yC, SIZE, true);
+						c.trasnlate(SIZE/2, SIZE/2);
+						if(++val < canvas.value){
+							
+						}
+					}
+				};
+			};
+		};
+	}
+		
+	</script>
+</head>
+<body>
+	<div id="main">
+		<canvas width="500" height="500" id="canvas">
+		
+		</canvas>
+		<label for="rango">Número de cuadrados a pintar: <span id="num"></span></label>
+		<input type="range" step="1" min="0" max="10" name="rango" id="rango" value="0">
+	</div>
+	
+</body>
+</html>

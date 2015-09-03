@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 6b</title>
+	<link rel="stylesheet" href="">
+	<script>
+		window.onload = main;
+		function main (){
+			var cnvs = document.getElementById("canvas");
+			if (cnvs && cnvs.getContext) {
+				var c = cnvs.getContext('2d');
+				if (c) {
+					var img = new Image(500,500);
+					img.src = 'joker.jpg';
+					img.onload = function (){
+						original();
+					};
+
+					var _1 = document.getElementById('1');
+					var _2 = document.getElementById('2');
+					var _3 = document.getElementById('3');
+					var _4 = document.getElementById('4');
+
+					_1.addEventListener('click', original, false);
+					_2.addEventListener('click', negativo, false);
+					document.addEventListener(_3, 'click', aclarar);
+					document.addEventListener(_4, 'click', oscurecer);
+
+					function original (){
+						c.drawImage(img, 0, 0, 500, 500);
+					};
+					function negativo (argument){
+						console.log('negativo');
+						var iData = c.getImageData(0,0,500,500);
+						var data = iData.data;
+						for(var i = 0; i<data.length; i+=4){
+							data[i] = 255-data[i];
+							data[i+1] = 255-data[i+1];
+							data[i+2] = 255 - data[i+2];
+						}
+						c.putImageData(iData, 0, 0);
+
+					};
+					function aclarar (argument){
+						/* body... */
+					};
+					function oscurecer (argument){
+						/* body... */
+					}
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+	<canvas width="500" height="500" id="canvas">
+		
+	</canvas>
+	<div class="botonera">
+		<button id="1">Original</button>
+		<button id="2">Negativo</button>
+		<button id="3">Aclarar</button>
+		<button id="4">Oscurecer</button>
+	</div>
+</body>
+</html>
